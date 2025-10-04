@@ -9,6 +9,7 @@
     "dev:backend": "cd backend && npm start",
     "build": "vite build",
     "preview": "vite preview",
+    "start": "npm run build && cd backend && npm install && NODE_ENV=production node server.js",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit -p tsconfig.app.json"
   },

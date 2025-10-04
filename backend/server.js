@@ -33,14 +33,14 @@ app.use('/api/reviews', reviewRoutes);
 app.use(errorHandler);
 
 // Serve frontend in production
-if (process.env.NODE_ENV === 'production') {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = path.dirname(__filename);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-  // Serve all static files from frontend build
+if (process.env.NODE_ENV === 'production') {
+  // Serve all static files from the frontend build (dist folder)
   app.use(express.static(path.join(__dirname, '../dist')));
 
-  // Return index.html for all other routes (React Router)
+  // Serve index.html for all non-API routes (React Router support)
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../dist/index.html'));
   });
